@@ -4,10 +4,13 @@ require 'open-uri'
 module Scraper
   URL = "https://books.toscrape.com/"
 
+
+
   def self.extract_genres(doc)
     genres_links = []
     genres_titles = []
     genres = []
+
     doc.css('ul.nav.nav-list > li > ul > li > a').map do |genre|
       # puts genre['href']
       genres_links.push genre['href']
@@ -28,5 +31,11 @@ module Scraper
   def self.get_books_by_genre(genre)
     #iterate over the array of genre objects, and if the tile matches, set a url to the href
     #then scrapre the url for the list of book titles at that genre page
+    genres.each do |genre|
+      if genre["title"] == genre
+        genre_url = genre["link"]
+        puts genre_url
+      end
+    end
   end
 end
