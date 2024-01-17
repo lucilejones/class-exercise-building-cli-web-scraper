@@ -21,9 +21,9 @@ class CLI
 
   def menu
     puts "Enter a book genre to see a list of books."
-    input_genre = gets.downcase
+    input_genre = gets
     list_books(input_genre)
-    input_genre
+    # input_genre
   end
 
   def list_books(genre)
