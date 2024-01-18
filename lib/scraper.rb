@@ -38,7 +38,9 @@ module Scraper
     #     # puts genre_url
     #   end
     # end
-    genre_obj = @genres.find { |obj| obj[:title].downcase == genre.strip }
+    genre_obj = @genres.find { |obj| obj[:title] == genre.strip }
+    
+    # puts genre_obj
     genre_url = genre_obj[:link]
 
     unparsed_page = URI.open(genre_url)
