@@ -3,11 +3,52 @@ require_relative 'scraper.rb'
 class CLI
   def run
     # puts "running program"
+    User.seed
     greet
+    enter_credentials
     # while menu != 'exit'
     # end
+    sign_in
     menu
     goodbye
+  end
+
+  def enter_credentials
+    puts "Do you have an account? Type 'Y' to sign in or 'N' to sign up: "
+    
+  end
+
+  def sign_in
+    is_athenticated = false
+
+    until is_authenticated
+      puts "Please enter your username: "
+      username = gets.chomp
+      puts "Please enter your password: "
+      password = gets.chomp
+
+      is_athenticated = Auth.authenticate_user(username, password, User.all)
+
+      if is_authenticated
+        puts "Welcome, #{username}!"
+      else
+        puts "Invalid username or password. Please try again."
+      end
+    end
+  end
+
+  def sign_up
+    puts "Sign up\n"
+    puts "Please enter a username: "
+    username = gets.chomp
+    puts "Please enter a password: "
+    password = gets.chomp
+
+    User.new(username, password)
+
+    puts "Welcome, #{username}! Please sign in to continue."
+
+    sign_in
   end
 
   def greet
