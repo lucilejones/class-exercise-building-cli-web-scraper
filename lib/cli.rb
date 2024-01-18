@@ -1,6 +1,7 @@
 require_relative 'scraper.rb'
 
 class CLI
+  
   def run
     # puts "running program"
     User.seed
@@ -11,6 +12,7 @@ class CLI
     sign_in
     menu
     # goodbye
+    # sign_out
   end
 
   def enter_credentials
@@ -130,7 +132,7 @@ class CLI
   end
 
   def sign_out
-    is_authenticated = false
+    # is_authenticated = false
     goodbye
   end
 
