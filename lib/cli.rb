@@ -10,7 +10,7 @@ class CLI
     # end
     sign_in
     menu
-    goodbye
+    # goodbye
   end
 
   def enter_credentials
@@ -127,6 +127,11 @@ class CLI
     else
       sign_out
     end
+  end
+
+  def sign_out
+    is_authenticated = false
+    goodbye
   end
 
   def goodbye
