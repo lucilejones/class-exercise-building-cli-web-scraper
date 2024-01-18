@@ -22,7 +22,7 @@ module Scraper
   end
 
   def self.scrape_data
-    puts "Scraping data..."
+    # puts "Scraping data..."
     unparsed_page = URI.open(URL)
     doc = Nokogiri::HTML(unparsed_page)
     extract_genres(doc)
@@ -38,7 +38,7 @@ module Scraper
     #     # puts genre_url
     #   end
     # end
-    genre_obj = @genres.find { |obj| obj[:title] == genre.strip }
+    genre_obj = @genres.find { |obj| obj[:title].downcase == genre.strip }
     genre_url = genre_obj[:link]
 
     unparsed_page = URI.open(genre_url)

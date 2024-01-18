@@ -11,11 +11,11 @@ class CLI
   end
 
   def greet
-    puts "Welcome to this Book Search CLI"
-    puts "What is your name?"
+    puts "Welcome to this Book Search CLI!"
+    puts "Enter your name to see a list of genres you can search by."
     input_name = gets.strip
     puts "Hello, #{input_name}!"
-    puts "Here are the genres you can search by: "
+    puts "Here are the genres: "
     Scraper.scrape_data
   end
 
