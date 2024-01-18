@@ -31,13 +31,15 @@ module Scraper
   def self.get_books_by_genre(genre)
     #iterate over the array of genre objects, and if the tile matches, set a url to the href
     #then scrapre the url for the list of book titles at that genre page
-    genre_url = ""
-    @genres.each do |obj|
-      if obj[:title].downcase == genre.downcase.strip
-        genre_url = obj[:link]
-        puts genre_url
-      end
-    end
+    # genre_url = ""
+    # @genres.each do |obj|
+    #   if obj[:title].downcase == genre.downcase.strip
+    #     genre_url = obj[:link]
+    #     # puts genre_url
+    #   end
+    # end
+    genre_obj = @genres.find { |obj| obj[:title] == genre.strip }
+    genre_url = genre_obj[:link]
 
     unparsed_page = URI.open(genre_url)
     doc = Nokogiri::HTML(unparsed_page)
